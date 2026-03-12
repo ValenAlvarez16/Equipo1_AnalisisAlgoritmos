@@ -1,13 +1,18 @@
 class Solution {
     // Objetivo: fusionar intervalos que se solapan para obtener un conjunto de
-    // intervalos no superpuestos que cubran los mismos rangos.
+    // intervalos no superpuestos que represente los mismos rangos.
     //
     // Enfoque: algoritmo greedy. Tras ordenar los intervalos por su inicio,
-    // se fusionan inmediatamente aquellos que se traslapan manteniendo siempre
-    // el intervalo combinado más grande posible hasta ese punto.
+    // se fusionan inmediatamente aquellos que se traslapan, manteniendo
+    // siempre el intervalo combinado más amplio posible hasta ese punto.
     //
-    // Complejidad temporal: O(n log n) por el ordenamiento.
-    // Complejidad espacial: O(n) por la estructura utilizada para almacenar el resultado.
+    // Justificación: al estar ordenados por inicio, si un intervalo se solapa,
+    // solo puede hacerlo con el último intervalo fusionado. Por ello, fusionarlos
+    // de inmediato conserva toda la información de los rangos cubiertos y
+    // garantiza una solución correcta.
+    //
+    // Complejidad temporal: O(n log n), debido al ordenamiento.
+    // Complejidad espacial: O(n), por la estructura usada para almacenar el resultado.
     public int[][] merge(int[][] intervals) {
         Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
         List<int[]> result = new ArrayList<>();

@@ -1,12 +1,18 @@
 class Solution {
-    // Determinar el número mínimo de intervalos que se deben eliminar
-    // para que el resto no se solapen entre sí.
+    // Objetivo: determinar el número mínimo de intervalos que se deben eliminar
+    // para que los intervalos restantes no se solapen entre sí.
     //
-    // Estrategia: algoritmo greedy seleccionando la mayor cantidad posible
+    // Enfoque: algoritmo greedy, seleccionando la mayor cantidad posible
     // de intervalos no superpuestos.
     //
-    // Complejidad temporal: O(n log n) debido al ordenamiento de los intervalos.
-    // Complejidad espacial: O(1) adicional (sin contar el espacio usado por sort).
+    // Justificación: elegir primero el intervalo que termina antes deja la
+    // mayor cantidad de espacio disponible para los siguientes intervalos,
+    // lo que permite conservar el máximo número de intervalos no solapados.
+    // Al maximizar los intervalos conservados, se minimiza la cantidad
+    // de intervalos eliminados.
+    //
+    // Complejidad temporal: O(n log n), debido al ordenamiento de los intervalos.
+    // Complejidad espacial: O(1) adicional, sin contar el espacio usado por sort.
     public int eraseOverlapIntervals(int[][] intervals) {
         Arrays.sort(intervals, (a, b) -> a[1] - b[1]);
 
